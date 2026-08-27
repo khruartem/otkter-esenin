@@ -1,0 +1,34 @@
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  html.is-scroll-locked {
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  img,
+  picture {
+    display: block;
+    max-width: 100%;
+  }
+
+  svg {
+    display: block;
+  }
+}

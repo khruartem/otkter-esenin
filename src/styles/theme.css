@@ -1,0 +1,27 @@
+@theme {
+  /* Palette */
+  --color-white-100: #fff;
+  --color-white-60: #939393;
+  --color-white-20: #bfbfbf;
+  --color-navy-100: #0b3954;
+  --color-dark-100: #000;
+  --color-sun-100: #f9b233;
+  --color-nephritis-100: #2ecc71;
+  --color-nephritis-120: #21aa58;
+
+  /* Background */
+  --color-background: var(--color-dark-100);
+
+  /* Text */
+  --color-primary: var(--color-white-100);
+  --color-secondary: var(--color-white-20);
+
+  /* Brand */
+  --color-accent: var(--color-sun-100);
+
+  /* Typography */
+  --font-sans: "Roboto", sans-serif;
+  --font-display: "Trattatello", sans-serif;
+  --font-accent: "Unbounded", sans-serif;
+  --tracking-default: 0.02em;
+}
