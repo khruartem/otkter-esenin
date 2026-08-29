@@ -6,6 +6,7 @@
   --color-navy-100: #0b3954;
   --color-dark-100: #000;
   --color-sun-100: #f9b233;
+  --color-sun-80: #ffcc6c;
   --color-nephritis-100: #2ecc71;
   --color-nephritis-120: #21aa58;
 
@@ -21,7 +22,7 @@
 
   /* Typography */
   --font-sans: "Roboto", sans-serif;
-  --font-display: "Trattatello", sans-serif;
+  --font-display: "MarckScript", sans-serif;
   --font-accent: "Unbounded", sans-serif;
   --tracking-default: 0.02em;
 }

@@ -1,0 +1,66 @@
+---
+import Cobrand from "../branding/Cobrand.astro";
+import CTA from "../ui/CTA.astro";
+---
+
+<section class="flex w-full flex-col">
+  <div class="hero">
+    <Cobrand />
+    <h1 class="sr-only">Поэтический спектакль «Есенин. Жизнь в стихах»</h1>
+  </div>
+  <div class="px-6 pbs-5">
+    <CTA />
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    flex: 1;
+    min-height: 612px;
+
+    padding-block-start: 32px;
+
+    background-image: url("../../assets/images/hero/hero_base.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  @media (min-width: 48rem) {
+    .hero {
+      background-image: url("../../assets/images/hero/hero_md.png");
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      padding-block-start: 44px;
+      padding-block-end: 60px;
+
+      background-image: url("../../assets/images/hero/hero_lg.png");
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .hero {
+      padding-block-start: 36px;
+      padding-block-end: 40px;
+
+      background-image: url("../../assets/images/hero/hero_xl.png");
+    }
+  }
+
+  @media (min-width: 96rem) {
+    .hero {
+      padding-block-start: 36px;
+      padding-block-end: 96px;
+
+      background-image: url("../../assets/images/hero/hero_2xl.png");
+    }
+  }
+</style>
