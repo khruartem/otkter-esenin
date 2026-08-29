@@ -1,19 +1,24 @@
 ---
-import Logo from './Logo.astro';
+import Logo from "./Logo.astro";
 import EventPlace from "../../assets/icons/event_place.svg";
 
 interface Props {
   class?: string;
 }
 
-const { class: className = "" } = Astro.props as Props;
+const { class: className = "" } = Astro.props;
 ---
 
-<div class:list={["w-fit h-10 flex items-center gap-5 lg:h-15 lg:gap-8", className]}>
-  <Logo variant="dark" class="w-46 max-h-8 lg:w-59 lg:max-h-10" />
-  <span
-    aria-hidden="true"
-    class="h-8 w-px shrink-0 bg-white-100"
-  ></span>
-  <EventPlace class="h-auto w-16.5 text-navy-100 lg:w-25" aria-label="ДК Богородский" />
+<div
+  class:list={[
+    "flex h-10 w-fit items-center gap-5 lg:h-15 lg:gap-8",
+    className,
+  ]}
+>
+  <Logo variant="dark" class="max-h-8 w-46 lg:max-h-10 lg:w-59" />
+  <span aria-hidden="true" class="bg-white-100 h-8 w-px shrink-0"></span>
+  <EventPlace
+    class="text-navy-100 h-auto w-16.5 lg:w-25"
+    aria-label="ДК Богородский"
+  />
 </div>

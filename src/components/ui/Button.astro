@@ -1,40 +1,88 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"button">;
+type ButtonProps = HTMLAttributes<"button"> & {
+  href?: never;
+};
+
+type LinkProps = HTMLAttributes<"a"> & {
+  type?: never;
+  disabled?: never;
+};
+
+type Props = ButtonProps | LinkProps;
 
 const {
+  href,
   type = "button",
   disabled = false,
-  class: className = "",
+  class: className,
   ...restProps
-} = Astro.props as Props;
+} = Astro.props;
 ---
 
-<button
-  type={type}
-  disabled={disabled}
-  {...restProps}
-  class:list={["button typography-label", className]}><slot /></button
->
+{
+  href ? (
+    <a
+      href={href}
+      {...restProps}
+      class:list={["action", "typography-label", className]}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      disabled={disabled}
+      {...restProps}
+      class:list={["action", "typography-label", className]}
+    >
+      <slot />
+    </button>
+  )
+}
 
 <style>
-  .button {
+  .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-block: 10px 6px;
+    padding-inline: 32px;
+
     color: var(--color-dark-100);
     background-color: var(--color-sun-100);
 
+    border: 0;
     border-radius: 100px;
 
-    padding-inline: 32px;
-    padding-block-start: 10px;
-    padding-block-end: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 150ms ease;
   }
 
-  .button:hover {
+  .action:not(:disabled):hover {
     background-color: var(--color-sun-80);
   }
 
-  .button:active {
+  .action:not(:disabled):active {
     background-color: var(--color-white-100);
+  }
+
+  .action:focus-visible {
+    outline: 2px solid var(--color-white-100);
+    outline-offset: 3px;
+  }
+
+  .action:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .action {
+      transition: none;
+    }
   }
 </style>
