@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"button">;
+
+const {
+  type = "button",
+  disabled = false,
+  class: className = "",
+  ...restProps
+} = Astro.props as Props;
+---
+
+<button
+  type={type}
+  disabled={disabled}
+  {...restProps}
+  class:list={["button typography-label", className]}><slot /></button
+>
+
+<style>
+  .button {
+    color: var(--color-dark-100);
+    background-color: var(--color-sun-100);
+
+    border-radius: 100px;
+
+    padding-inline: 32px;
+    padding-block-start: 10px;
+    padding-block-end: 6px;
+  }
+
+  .button:hover {
+    background-color: var(--color-sun-80);
+  }
+
+  .button:active {
+    background-color: var(--color-white-100);
+  }
+</style>
