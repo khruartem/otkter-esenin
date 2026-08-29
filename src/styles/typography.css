@@ -49,10 +49,68 @@
   letter-spacing: var(--tracking-default);
 }
 
-@utility typography-body-sm {
+@utility typography-body-md {
   font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
   letter-spacing: var(--tracking-default);
+}
+
+@utility typography-body-sm {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: var(--tracking-default);
+}
+
+/* Accent */
+@utility typography-accent-2xl {
+  font-family: var(--font-accent);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: var(--tracking-default);
+}
+
+@utility typography-accent-xl {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: var(--tracking-default);
+}
+
+@utility typography-accent-lg {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: var(--tracking-default);
+}
+
+@utility typography-accent-md {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: var(--tracking-default);
+}
+
+@utility typography-accent-sm {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: var(--tracking-default);
+}
+
+/* Utility text */
+@utility typography-label {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 44px;
+  letter-spacing: 0;
 }
