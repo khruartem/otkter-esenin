@@ -1,0 +1,19 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const BUY_TICKET =
+  "https://biletof.com/action/?ra=20043&frame=1&action=11787&place=47";
+---
+
+<Button
+  href={BUY_TICKET}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={className}>Купить билет</Button
+>

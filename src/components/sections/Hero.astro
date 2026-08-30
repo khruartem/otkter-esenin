@@ -1,39 +1,75 @@
 ---
+import { Image } from "astro:assets";
+
 import Cobrand from "../branding/Cobrand.astro";
 import CTA from "../ui/CTA.astro";
+
+import heroBaseSource from "../../assets/images/hero/hero_base.png";
 ---
 
-<section class="flex w-full flex-col">
-  <div class="hero">
-    <Cobrand />
+<section class="hero flex w-full flex-col">
+  <div class="hero__top">
+    <Image src={heroBaseSource} alt="" class="md:hidden" aria-hidden />
+    <Cobrand class="hero__cobrand" />
     <h1 class="sr-only">Поэтический спектакль «Есенин. Жизнь в стихах»</h1>
   </div>
-  <div class="px-6 pbs-5">
+  <div class="hero__bottom">
     <CTA />
   </div>
 </section>
 
 <style>
-  .hero {
+  .hero__top {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    /* padding-block-start: 32px; */
 
-    flex: 1;
-    min-height: 612px;
+    /* flex: 1; */
+    /* width: 100%; */
 
-    padding-block-start: 32px;
-
-    background-image: url("../../assets/images/hero/hero_base.png");
+    /* background-image: url("../../assets/images/hero/hero_base.png");
     background-position: top;
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+  }
+
+  :global(.hero__cobrand) {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero__bottom {
+    padding-inline: 24px;
+    padding-block-start: 20px;
   }
 
   @media (min-width: 48rem) {
-    .hero {
+    .hero__top {
+      padding-block-start: 32px;
+
+      width: 100%;
+      min-height: 747px;
+
       background-image: url("../../assets/images/hero/hero_md.png");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    :global(.hero__cobrand) {
+      position: unset;
+      transform: none;
+    }
+
+    .hero__bottom {
+      padding-inline: unset;
+      padding-block-start: 29px;
     }
   }
 
@@ -42,7 +78,24 @@ import CTA from "../ui/CTA.astro";
       padding-block-start: 44px;
       padding-block-end: 60px;
 
+      min-height: 848px;
+
       background-image: url("../../assets/images/hero/hero_lg.png");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero__top {
+      padding-block-start: unset;
+
+      flex: 1;
+      min-height: unset;
+
+      background-image: none;
+      background-position: unset;
+      background-size: unset;
+      background-repeat: unset;
     }
   }
 
@@ -50,6 +103,8 @@ import CTA from "../ui/CTA.astro";
     .hero {
       padding-block-start: 36px;
       padding-block-end: 40px;
+
+      min-height: 620px;
 
       background-image: url("../../assets/images/hero/hero_xl.png");
     }
@@ -59,6 +114,8 @@ import CTA from "../ui/CTA.astro";
     .hero {
       padding-block-start: 36px;
       padding-block-end: 96px;
+
+      min-height: 900px;
 
       background-image: url("../../assets/images/hero/hero_2xl.png");
     }
