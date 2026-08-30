@@ -11,14 +11,17 @@ const { class: className = "" } = Astro.props;
 
 <div
   class:list={[
-    "flex h-10 w-fit items-center gap-5 lg:h-15 lg:gap-8",
+    "flex h-10 w-fit items-center gap-5 lg:h-15 lg:gap-8 xl:h-10 xl:gap-5 2xl:h-15 2xl:gap-8",
     className,
   ]}
 >
-  <Logo variant="dark" class="max-h-8 w-46 lg:max-h-10 lg:w-59" />
+  <Logo
+    variant="dark"
+    class="max-h-8 w-46 lg:max-h-10 lg:w-59 xl:max-h-8 xl:w-46 2xl:max-h-10 2xl:w-59"
+  />
   <span aria-hidden="true" class="bg-white-100 h-8 w-px shrink-0"></span>
   <EventPlace
-    class="text-navy-100 h-auto w-16.5 lg:w-25"
+    class="text-navy-100 h-auto w-16.5 lg:w-25 xl:w-16.5 2xl:w-25"
     aria-label="ДК Богородский"
   />
 </div>

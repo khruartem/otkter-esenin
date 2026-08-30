@@ -1,0 +1,56 @@
+---
+import { getImage } from "astro:assets";
+
+import hero2xlSource from "../../assets/images/hero/hero_2xl.png";
+import heroXlSource from "../../assets/images/hero/hero_xl.png";
+import heroMdSource from "../../assets/images/hero/hero_md.png";
+import heroSmSource from "../../assets/images/hero/hero_base.png";
+
+const [hero2xl, heroXl, heroMd, heroSm] = await Promise.all([
+  getImage({
+    src: hero2xlSource,
+    format: "webp",
+    quality: 85,
+  }),
+  getImage({
+    src: heroXlSource,
+    format: "webp",
+    quality: 85,
+  }),
+  getImage({
+    src: heroMdSource,
+    format: "webp",
+    quality: 85,
+  }),
+  getImage({
+    src: heroSmSource,
+    format: "webp",
+    quality: 85,
+  }),
+]);
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<picture class:list={["block w-full", className]}>
+  <source media="(min-width: 1536px)" srcset={hero2xl.src} type="image/webp" />
+
+  <source media="(min-width: 1280px)" srcset={heroXl.src} type="image/webp" />
+
+  <source media="(min-width: 768px)" srcset="" type="image/webp" />
+
+  <img
+    src={heroSm.src}
+    width={heroSm.attributes.width}
+    height={heroSm.attributes.height}
+    alt="Спектакль «Есенин. Жизнь в стихах»"
+    class:list={["block h-auto w-full", className]}
+    loading="eager"
+    decoding="sync"
+    fetchpriority="high"
+  />
+</picture>
