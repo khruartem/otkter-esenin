@@ -3,24 +3,24 @@
   font-family: var(--font-display);
   font-size: 44px;
   font-weight: 400;
-  line-height: 56px;
-  letter-spacing: var(--tracking-default);
+  line-height: 48px;
+  letter-spacing: 0;
 }
 
 @utility typography-display-md {
   font-family: var(--font-display);
   font-size: 36px;
   font-weight: 400;
-  line-height: 48px;
-  letter-spacing: var(--tracking-default);
+  line-height: 40px;
+  letter-spacing: 0;
 }
 
 @utility typography-display-sm {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 400;
-  line-height: 32px;
-  letter-spacing: var(--tracking-default);
+  line-height: 28px;
+  letter-spacing: 0;
 }
 
 /* Heading */
