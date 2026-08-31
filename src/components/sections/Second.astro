@@ -2,19 +2,34 @@
 import BuyButton from "../ui/BuyButton.astro";
 ---
 
-<section>
-  <div>
-    <h2>
+<section
+  class="flex w-full flex-col items-center gap-15 py-20 xl:gap-80 xl:py-25 2xl:gap-27 2xl:py-31.25"
+>
+  <div
+    class="flex w-full flex-col gap-5 px-6 text-center md:px-22.5 lg:px-30.5 xl:gap-6 xl:px-51.25 2xl:gap-8 2xl:px-107"
+  >
+    <h2 class="typography-display-sm md:hidden">
       Этот спектакль не про смерть, а про жизнь и загадочную русскую душу,
       отражённую в стихах поэта.
     </h2>
-    <p>
+    <h2 class="md:typography-display-md hidden md:flex md:flex-col lg:hidden">
+      <span>Этот спектакль не про смерть,</span>
+      <span>а про жизнь и загадочную русскую</span>
+      <span>душу, отражённую в стихах поэта.</span>
+    </h2>
+    <h2
+      class="lg:typography-display-md xl:typography-display-lg hidden lg:flex lg:flex-col"
+    >
+      <span>Этот спектакль не про смерть, а про жизнь</span>
+      <span>и загадочную русскую душу, отражённую</span>
+      <span>в стихах поэта.</span>
+    </h2>
+    <p class="typography-body-md text-white-20 2xl:typography-body-lg">
       В 2025 году исполнилось 130 лет со дня рождения Сергея Есенина. Творческое
       объединение «Открытая Территория» приглашает зрителей на спектакль
       «Есенин. Жизнь в стихах». В исполнении артистов прозвучат стихи, а песни
       сольются с партией фортепиано.
     </p>
   </div>
-  <ul></ul>
   <BuyButton />
 </section>
