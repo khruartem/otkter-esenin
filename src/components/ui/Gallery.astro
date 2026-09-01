@@ -12,17 +12,26 @@ const { photos, class: className = "" } = Astro.props;
 ---
 
 <ul
+  data-gallery
   class:list={["gallery", "w-max gap-3 lg:gap-5 xl:gap-6", className]}
   style=`--photos-count: ${photos.length}`
 >
   {
     photos.map((photo) => (
       <li class="h-48 w-93 md:w-72 lg:h-50 lg:w-75 xl:h-61.5 xl:w-92 2xl:h-87 2xl:w-130">
-        <Image class="h-full w-full rounded-[20px] object-contain" {...photo} />
+        <Image
+          data-photo
+          class="h-full w-full rounded-[20px] object-contain"
+          {...photo}
+        />
       </li>
     ))
   }
 </ul>
+
+<dialog data-lightbox>
+  <img data-current-photo src="" alt="" />
+</dialog>
 
 <style>
   .gallery {

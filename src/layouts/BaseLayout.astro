@@ -44,5 +44,9 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
 
   <body>
     <slot />
+
+    <script>
+      import "../scripts/init";
+    </script>
   </body>
 </html>
