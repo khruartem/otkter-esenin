@@ -1,4 +1,4 @@
-import type { PhotoItem } from "./photos";
+import type { PhotoItem } from "../data/photos";
 
 export interface IPhotoData {
   currentPhoto: PhotoItem;
