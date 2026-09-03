@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 import Close from "../../assets/icons/close.svg";
+import PhotoModalView from "../view/PhotoModalView.astro";
 ---
 
 <div class="modal" data-modal>
@@ -8,11 +9,12 @@ import Close from "../../assets/icons/close.svg";
     class="modal__close"
     type="button"
     aria-label="Закрыть"
-    data-modal-close
-    iconed><Close /></Button
+    data-modal-close><Close /></Button
   >
 
-  <div data-modal-content></div>
+  <div class="max-h-full xl:w-6xl 2xl:w-440" data-modal-content>
+    <PhotoModalView />
+  </div>
 </div>
 
 <style>

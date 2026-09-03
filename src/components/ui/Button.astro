@@ -10,18 +10,18 @@ type LinkProps = HTMLAttributes<"a"> & {
   disabled?: never;
 };
 
-type Props = (ButtonProps | LinkProps) & {
-  iconed?: boolean;
-};
+type Props = ButtonProps | LinkProps;
 
 const {
   href,
-  iconed = false,
   type = "button",
   disabled = false,
   class: className,
   ...restProps
 } = Astro.props;
+
+const slotHtml = await Astro.slots.render("default");
+const isIcon = slotHtml.includes("<svg");
 ---
 
 {
@@ -31,7 +31,7 @@ const {
       {...restProps}
       class:list={[
         "action",
-        { action_iconed: iconed },
+        { action_iconed: isIcon },
         "typography-label",
         className,
       ]}
@@ -45,7 +45,7 @@ const {
       {...restProps}
       class:list={[
         "action",
-        { action_iconed: iconed },
+        { action_iconed: isIcon },
         "typography-label w-full md:w-fit",
         className,
       ]}

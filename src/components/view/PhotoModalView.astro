@@ -1,0 +1,94 @@
+---
+import Button from "../ui/Button.astro";
+
+import Left from "../../assets/icons/arrow_left.svg";
+import Right from "../../assets/icons/arrow_right.svg";
+
+import source from "../../assets/images/gallery/photo_1.jpg";
+---
+
+<!-- <template data-photo-modal-template> -->
+<div class="photo-modal">
+  <Button class="photo-modal__button photo-modal__button_left"><Left /></Button>
+  <img
+    src={source.src}
+    class="photo-modal__image"
+    data-photo-modal-image
+    alt=""
+  />
+  <Button class="photo-modal__button photo-modal__button_right"
+    ><Right /></Button
+  >
+</div>
+<!-- </template> -->
+
+<style>
+  .photo-modal {
+    display: flex;
+
+    position: relative;
+  }
+
+  .photo-modal__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .photo-modal__button_left {
+    left: 0;
+  }
+
+  .photo-modal__button_right {
+    right: 0;
+  }
+
+  .photo-modal__image {
+    width: 100%;
+    max-height: 216px;
+
+    object-fit: contain;
+  }
+
+  @media (min-width: 48rem) {
+    .photo-modal__image {
+      max-height: 400px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .photo-modal__image {
+      max-height: 532px;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .photo-modal {
+      width: 100%;
+      height: 100%;
+
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .photo-modal__button {
+      position: unset;
+      top: unset;
+      transform: unset;
+    }
+
+    .photo-modal__image {
+      width: unset;
+      height: 100%;
+
+      max-width: 956px;
+      max-height: unset;
+    }
+  }
+
+  @media (min-width: 96rem) {
+    .photo-modal__image {
+      max-width: 1366px;
+    }
+  }
+</style>
