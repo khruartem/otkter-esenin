@@ -10,10 +10,13 @@ type LinkProps = HTMLAttributes<"a"> & {
   disabled?: never;
 };
 
-type Props = ButtonProps | LinkProps;
+type Props = (ButtonProps | LinkProps) & {
+  iconed?: boolean;
+};
 
 const {
   href,
+  iconed = false,
   type = "button",
   disabled = false,
   class: className,
@@ -26,7 +29,12 @@ const {
     <a
       href={href}
       {...restProps}
-      class:list={["action", "typography-label", className]}
+      class:list={[
+        "action",
+        { action_iconed: iconed },
+        "typography-label",
+        className,
+      ]}
     >
       <slot />
     </a>
@@ -35,7 +43,12 @@ const {
       type={type}
       disabled={disabled}
       {...restProps}
-      class:list={["action", "typography-label w-full md:w-fit", className]}
+      class:list={[
+        "action",
+        { action_iconed: iconed },
+        "typography-label w-full md:w-fit",
+        className,
+      ]}
     >
       <slot />
     </button>
@@ -62,6 +75,17 @@ const {
     transition: background-color 150ms ease;
   }
 
+  .action_iconed {
+    padding: 14px;
+
+    color: var(--color-sun-100);
+    background-color: transparent;
+
+    border-radius: unset;
+
+    transition: color 150ms ease;
+  }
+
   .action:not(:disabled):hover {
     background-color: var(--color-sun-80);
   }
@@ -78,6 +102,21 @@ const {
   .action:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  .action_iconed:not(:disabled):hover {
+    color: var(--color-sun-80);
+    background-color: transparent;
+  }
+
+  .action_iconed:not(:disabled):active {
+    color: var(--color-white-100);
+    background-color: transparent;
+  }
+
+  .action:focus-visible {
+    outline: 2px solid var(--color-white-100);
+    outline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
