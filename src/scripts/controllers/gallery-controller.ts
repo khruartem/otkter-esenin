@@ -177,9 +177,7 @@ import { AppEvents } from "../../shared/events/events";
 
 export class GalleryController {
   constructor(
-    private readonly root: HTMLUListElement,
-    private readonly nextButton: HTMLButtonElement,
-    private readonly previousButton: HTMLButtonElement,
+    private readonly root: HTMLElement,
     private readonly events: IEvents,
   ) {
     this.init();
@@ -187,8 +185,6 @@ export class GalleryController {
 
   private init(): void {
     this.root.addEventListener("click", this.handleClick);
-    this.nextButton.addEventListener("click", this.handleNextPhoto);
-    this.previousButton.addEventListener("click", this.handlePreviousPhoto);
   }
 
   private handleClick = (event: MouseEvent): void => {
@@ -214,17 +210,7 @@ export class GalleryController {
     this.events.emit(AppEvents.GALLERY_PHOTO_SELECTED, { index });
   };
 
-  private handleNextPhoto = (): void => {
-    this.events.emit(AppEvents.GALLERY_NEXT_PHOTO);
-  };
-
-  private handlePreviousPhoto = (): void => {
-    this.events.emit(AppEvents.GALLERY_PREVIOUS_PHOTO);
-  };
-
   destroy(): void {
     this.root.removeEventListener("click", this.handleClick);
-    this.nextButton.removeEventListener("click", this.handleNextPhoto);
-    this.previousButton.removeEventListener("click", this.handlePreviousPhoto);
   }
 }

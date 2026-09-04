@@ -1,26 +1,23 @@
 ---
 import Button from "../ui/Button.astro";
 
-import Left from "../../assets/icons/arrow_left.svg";
-import Right from "../../assets/icons/arrow_right.svg";
-
-import source from "../../assets/images/gallery/photo_1.jpg";
+import Previous from "../../assets/icons/arrow_left.svg";
+import Next from "../../assets/icons/arrow_right.svg";
 ---
 
-<!-- <template data-photo-modal-template> -->
-<div class="photo-modal">
-  <Button class="photo-modal__button photo-modal__button_left"><Left /></Button>
-  <img
-    src={source.src}
-    class="photo-modal__image"
-    data-photo-modal-image
-    alt=""
-  />
-  <Button class="photo-modal__button photo-modal__button_right"
-    ><Right /></Button
-  >
-</div>
-<!-- </template> -->
+<template data-photo-modal-template>
+  <div class="photo-modal">
+    <Button
+      class="photo-modal__button photo-modal__button_left"
+      data-button-previous><Previous /></Button
+    >
+    <img class="photo-modal__image" data-photo-modal-image alt="" />
+    <Button
+      class="photo-modal__button photo-modal__button_right"
+      data-button-next><Next /></Button
+    >
+  </div>
+</template>
 
 <style>
   .photo-modal {

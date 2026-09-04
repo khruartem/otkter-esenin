@@ -1,10 +1,9 @@
 ---
 import Button from "./Button.astro";
 import Close from "../../assets/icons/close.svg";
-import PhotoModalView from "../view/PhotoModalView.astro";
 ---
 
-<div class="modal" data-modal>
+<dialog class="modal" data-modal>
   <Button
     class="modal__close"
     type="button"
@@ -12,30 +11,46 @@ import PhotoModalView from "../view/PhotoModalView.astro";
     data-modal-close><Close /></Button
   >
 
-  <div class="max-h-full xl:w-6xl 2xl:w-440" data-modal-content>
-    <PhotoModalView />
-  </div>
-</div>
+  <div class="max-h-full xl:w-6xl 2xl:w-440" data-modal-content></div>
+</dialog>
 
 <style>
   .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    inset: 0;
 
-    position: relative;
-
-    width: 100%;
+    width: 100vw;
     height: 100dvh;
+
+    max-width: none;
+    max-height: none;
+
+    background-color: var(--color-background);
 
     padding-inline: 19px;
     border: 0;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    overflow: hidden;
   }
 
   /* .modal::backdrop {
     background: rgb(0 0 0 / 70%);
   } */
+
+  .modal[open] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal:not([open]) {
+    display: none;
+  }
 
   .modal__close {
     position: absolute;

@@ -22,6 +22,10 @@ export class PhotoData implements IPhotoData {
     this._currentIndex = index;
   }
 
+  get currentIndex() {
+    return this._currentIndex;
+  }
+
   get currentPhoto(): PhotoItem {
     const currentPhoto = this._photos[this._currentIndex];
 
@@ -33,7 +37,7 @@ export class PhotoData implements IPhotoData {
   }
 
   changePhoto(index: number) {
-    if (index > this._photos.length) {
+    if (index >= this._photos.length) {
       this._currentIndex = 0;
       return;
     }
