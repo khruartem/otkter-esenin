@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 
+import Modal from "../components/ui/Modal.astro";
+import PhotoModalView from "../components/view/PhotoModalView.astro";
+
 interface Props {
   title: string;
 
@@ -45,8 +48,11 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
   <body>
     <slot />
 
-    <!-- <script>
-      import "../scripts/init";
-    </script> -->
+    <Modal />
+    <PhotoModalView />
+
+    <script>
+      import "../scripts";
+    </script>
   </body>
 </html>

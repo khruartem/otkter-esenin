@@ -1,20 +1,18 @@
 export class ModalController {
-  private readonly contentElement: HTMLElement;
+  private readonly content: HTMLElement;
   private readonly closeButton: HTMLButtonElement;
 
   constructor(private readonly root: HTMLDialogElement) {
-    const contentElement = root.querySelector<HTMLElement>(
-      "[data-modal-content]",
-    );
+    const content = root.querySelector<HTMLElement>("[data-modal-content]");
 
     const closeButton =
       root.querySelector<HTMLButtonElement>("[data-modal-close]");
 
-    if (!contentElement || !closeButton) {
+    if (!content || !closeButton) {
       throw new Error("ModalController: не найдены обязательные компоненты");
     }
 
-    this.contentElement = contentElement;
+    this.content = content;
     this.closeButton = closeButton;
 
     this.init();
@@ -24,10 +22,14 @@ export class ModalController {
     this.closeButton.addEventListener("click", this.close);
 
     this.root.addEventListener("click", this.handleBackdropClick);
+
+    this.root.addEventListener("close", this.close);
   }
 
   open(content: HTMLElement): void {
-    this.contentElement.replaceChildren(content);
+    this.update(content);
+
+    document.body.classList.add("modal-open");
 
     this.root.showModal();
   }
@@ -35,7 +37,17 @@ export class ModalController {
   close = (): void => {
     this.root.close();
 
-    this.contentElement.replaceChildren();
+    document.body.classList.remove("modal-open");
+
+    this.clear();
+  };
+
+  update(content: HTMLElement): void {
+    this.content.replaceChildren(content);
+  }
+
+  clear = (): void => {
+    this.content.replaceChildren();
   };
 
   private handleBackdropClick = (event: MouseEvent): void => {
