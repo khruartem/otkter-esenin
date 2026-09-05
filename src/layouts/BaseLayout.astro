@@ -4,6 +4,8 @@ import "../styles/global.css";
 import Modal from "../components/ui/Modal.astro";
 import PhotoModalView from "../components/view/PhotoModalView.astro";
 
+import { photos } from "../data/photos";
+
 interface Props {
   title: string;
 
@@ -49,7 +51,7 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
     <slot />
 
     <Modal />
-    <PhotoModalView />
+    <PhotoModalView count={photos.length} />
 
     <script>
       import "../scripts";
