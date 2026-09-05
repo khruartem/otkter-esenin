@@ -4,6 +4,7 @@ const AppEvents = {
   GALLERY_PHOTO_SELECTED: "gallery:photoSelected",
   GALLERY_NEXT_PHOTO: "gallery:nextPhoto",
   GALLERY_PREVIOUS_PHOTO: "gallery:previousPhoto",
+  GALLERY_PHOTO_CHANGED: "gallery:photoChanged",
 } as const;
 
 type AppEvents = (typeof AppEvents)[keyof typeof AppEvents];

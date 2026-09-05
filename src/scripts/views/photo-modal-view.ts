@@ -54,6 +54,10 @@ export class PhotoModalView {
     this.events.emit(AppEvents.GALLERY_PREVIOUS_PHOTO);
   };
 
+  get content(): HTMLElement {
+    return this._content;
+  }
+
   render(photo: PhotoItem): HTMLElement {
     this._image.src = photo.src;
     this._image.alt = photo.alt;

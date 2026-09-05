@@ -11,7 +11,7 @@ import Close from "../../assets/icons/close.svg";
     data-modal-close><Close /></Button
   >
 
-  <div class="max-h-full xl:w-6xl 2xl:w-440" data-modal-content></div>
+  <div class="modal__content" data-modal-content></div>
 </dialog>
 
 <style>
@@ -37,10 +37,6 @@ import Close from "../../assets/icons/close.svg";
     overflow: hidden;
   }
 
-  /* .modal::backdrop {
-    background: rgb(0 0 0 / 70%);
-  } */
-
   .modal[open] {
     display: flex;
     flex-direction: column;
@@ -57,6 +53,12 @@ import Close from "../../assets/icons/close.svg";
     top: 16px;
     right: 22px;
     z-index: 1;
+  }
+
+  .modal__content {
+    width: 100%;
+    min-height: 0;
+    max-height: 100%;
   }
 
   @media (min-width: 48rem) {
@@ -86,7 +88,13 @@ import Close from "../../assets/icons/close.svg";
       justify-content: flex-start;
 
       padding-block-start: 32px;
+      padding-block-end: 28px;
       padding-inline: 0;
+    }
+
+    .modal__content {
+      flex: 1;
+      max-width: 1152px;
     }
 
     .modal__close {
@@ -98,11 +106,16 @@ import Close from "../../assets/icons/close.svg";
   @media (min-width: 96rem) {
     .modal {
       padding-block-start: 48px;
+      padding-block-end: 64px;
     }
 
     .modal__close {
       top: 48px;
       right: 48px;
+    }
+
+    .modal__content {
+      max-width: 1760px;
     }
   }
 </style>

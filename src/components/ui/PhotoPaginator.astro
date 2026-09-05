@@ -1,0 +1,78 @@
+---
+interface Props {
+  count: number;
+}
+
+const { count } = Astro.props;
+---
+
+<ul
+  class="photo-pagination"
+  data-photo-pagination
+  aria-label="Навигация по фотографиям"
+>
+  {
+    Array.from({ length: count }, (_, index) => (
+      <li
+        class="photo-pagination__item"
+        data-pagination-index={index}
+        aria-label={`Фотография под номером ${index + 1}`}
+      >
+        <span class="photo-pagination__dot" />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .photo-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .photo-pagination__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px;
+    border: 0;
+
+    background: transparent;
+  }
+
+  .photo-pagination__dot {
+    display: block;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 100px;
+
+    background-color: var(--color-white-60);
+
+    transition:
+      width 240ms ease,
+      transform 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .photo-pagination__item[data-active] .photo-pagination__dot {
+    width: 12px;
+    height: 6px;
+
+    padding: 1px 0;
+
+    background-color: var(--color-sun-100);
+  }
+
+  .photo-pagination__item:hover .photo-pagination__dot {
+    transform: scale(2.5);
+  }
+
+  .photo-pagination__item[data-active]:hover .photo-pagination__dot {
+    transform: none;
+  }
+</style>
