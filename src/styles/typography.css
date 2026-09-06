@@ -1,4 +1,12 @@
 /* Display */
+@utility typography-display-xl {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 56px;
+  letter-spacing: 0;
+}
+
 @utility typography-display-lg {
   font-family: var(--font-display);
   font-size: 44px;
@@ -107,10 +115,18 @@
 }
 
 /* Utility text */
-@utility typography-label {
+@utility typography-label-md {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 400;
   line-height: 44px;
+  letter-spacing: 0;
+}
+
+@utility typography-label-sm {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
   letter-spacing: 0;
 }
