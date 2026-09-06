@@ -1,0 +1,21 @@
+---
+import Container from "../layout/Container.astro";
+import Communication from "../ui/Communication.astro";
+import CTA from "../ui/CTA.astro";
+
+import { communications } from "../../data/communications";
+---
+
+<section>
+  <Container>
+    <h2>Пресса о спектакле</h2>
+    {
+      communications.map((communication) => (
+        <li>
+          <Communication {...communication} />
+        </li>
+      ))
+    }
+    <CTA />
+  </Container>
+</section>

@@ -1,0 +1,109 @@
+---
+import type { Artist } from "../../data/artists";
+
+import { Image } from "astro:assets";
+
+type Props = Artist;
+
+const { name, avatar, role, regal } = Astro.props;
+---
+
+<article class="artist flex flex-col items-center gap-5">
+  <Image
+    class="artist__avatar rounded-[200px] object-cover"
+    src={avatar}
+    alt=`Фотография ${name}`
+  />
+  <div class="artist__info flex w-full flex-col items-center text-center">
+    <p
+      class="text-nephritis-100 typography-label-md md:typography-label-sm 2xl:typography-label-md"
+    >
+      {role}
+    </p>
+    <h3
+      class="text-navy-100 typography-accent-2xl md:typography-accent-xl lg:typography-accent-lg xl:typography-accent-xl 2xl:typography-accent-2xl w-min"
+    >
+      {name}
+    </h3>
+    <p
+      class="text-white-60 typography-body-md md:typography-body-sm 2xl:typography-body-md max-w-[23ch] md:max-w-max"
+    >
+      {regal}
+    </p>
+  </div>
+</article>
+
+<style>
+  .artist {
+    width: 100%;
+  }
+
+  .artist__avatar {
+    width: 270px;
+    height: 270px;
+  }
+
+  .artist__info {
+    gap: 8px;
+  }
+
+  @media (min-width: 48rem) {
+    .artist {
+      max-width: 264px;
+    }
+
+    .artist__avatar {
+      width: 200px;
+      height: 200px;
+    }
+
+    .artist__info {
+      gap: 4px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .artist {
+      max-width: 220px;
+    }
+
+    .artist__avatar {
+      width: 160px;
+      height: 160px;
+    }
+
+    .artist__info {
+      gap: 8px;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .artist {
+      max-width: 270px;
+    }
+
+    .artist__avatar {
+      width: 200px;
+      height: 200px;
+    }
+
+    .artist__info {
+      gap: 4px;
+    }
+  }
+
+  @media (min-width: 96rem) {
+    .artist {
+      max-width: 384px;
+    }
+
+    .artist__avatar {
+      width: 270px;
+      height: 270px;
+    }
+
+    .artist__info {
+      gap: 8px;
+    }
+  }
+</style>

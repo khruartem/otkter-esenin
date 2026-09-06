@@ -34,15 +34,22 @@ const { count } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
 
+    gap: 24px;
+
+    width: 100%;
     height: 100%;
+
+    min-width: 0;
   }
 
   .photo-modal {
     display: flex;
 
     position: relative;
+
+    width: 100%;
+    min-width: 0;
   }
 
   .photo-modal__button {
@@ -61,6 +68,7 @@ const { count } = Astro.props;
 
   .photo-modal__image {
     width: 100%;
+    max-width: 100%;
     max-height: 216px;
 
     object-fit: contain;
@@ -84,8 +92,6 @@ const { count } = Astro.props;
       min-height: 0;
 
       width: 100%;
-      /* height: 100%;
-      max-height: 540px; */
 
       justify-content: space-between;
       align-items: center;
@@ -109,10 +115,6 @@ const { count } = Astro.props;
   @media (min-width: 96rem) {
     .photo-modal-wrapper {
       gap: 48px;
-    }
-
-    .photo-modal {
-      /* max-height: 752px; */
     }
 
     .photo-modal__image {
