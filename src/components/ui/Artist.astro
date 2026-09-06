@@ -8,7 +8,7 @@ type Props = Artist;
 const { name, avatar, role, regal } = Astro.props;
 ---
 
-<div class="artist flex flex-col items-center gap-5">
+<article class="artist flex flex-col items-center gap-5">
   <Image
     class="artist__avatar rounded-[200px] object-cover"
     src={avatar}
@@ -31,7 +31,7 @@ const { name, avatar, role, regal } = Astro.props;
       {regal}
     </p>
   </div>
-</div>
+</article>
 
 <style>
   .artist {

@@ -3,23 +3,34 @@ import BuyButton from "./BuyButton.astro";
 
 interface Props {
   class?: string;
+  compacted?: boolean;
 }
 
-const { class: className } = Astro.props;
+const { class: className, compacted = false } = Astro.props;
+
+const DATE_AND_TIME = "6 октября, 19:00";
+const ADRESS_PART_1 = "МУК «Районный дом культуры»,";
+const ADRESS_PART_2 = "г. Ногинск, ул. Текстилей, д. 31";
+const ADRESS_FULL = `${ADRESS_PART_1} ${ADRESS_PART_2}`;
 ---
 
 <div class:list={["flex flex-col items-center gap-5 md:gap-7", className]}>
   <BuyButton />
   <div class="flex flex-col items-center gap-2 px-15.5 md:px-0">
-    <p class="typography-accent-md text-white-100">6 октября, 19:00</p>
+    <p class="typography-accent-md text-white-100">{DATE_AND_TIME}</p>
     <div
       class="typography-body-sm text-white-20 flex min-w-62 flex-col items-center"
     >
-      <p class="hidden md:block lg:hidden">
-        МУК «Районный дом культуры», г. Ногинск, ул. Текстилей, д. 31
-      </p>
-      <p class="block md:hidden lg:block">МУК «Районный дом культуры»,</p>
-      <p class="block md:hidden lg:block">г. Ногинск, ул. Текстилей, д. 31</p>
+     {
+      compacted ?
+        (
+          <p class="hidden md:block lg:hidden">{ADRESS_FULL}</p>
+          <p class="block md:hidden lg:block">{ADRESS_PART_1}</p>
+          <p class="block md:hidden lg:block">{ADRESS_PART_2}</p>
+        ) : (
+          <p>{ADRESS_FULL}</p>
+        )
+      }
     </div>
   </div>
 </div>
