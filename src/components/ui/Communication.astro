@@ -1,12 +1,111 @@
 ---
 import type { Communication } from "../../data/communications";
 
+import Arrow from "../../assets/icons/arrow_media.svg";
+
 type Props = Communication;
 
 const { media, title, url } = Astro.props;
 ---
 
-<a href={url} target="_blank">
-  <h3>{media}</h3>
-  <p>{title}</p>
+<a href={url} target="_blank" class="communication flex flex-col">
+  <h3
+    class="communication__media typography-body-sm text-sun-100 flex items-center"
+  >
+    <span>{media}</span>
+    <span class="communication__arrow h-auto w-8"><Arrow /></span>
+  </h3>
+  <p
+    class="communication__title typography-accent-sm text-white-20 lg:typography-accent-md"
+  >
+    {title}
+  </p>
 </a>
+
+<style>
+  .communication {
+    width: 100%;
+    padding-block-start: 0;
+  }
+
+  .communication__arrow {
+    margin-inline-start: 8px;
+    transition: margin-inline-start 5s ease-out;
+  }
+
+  .communication:hover .communication__arrow {
+    margin-inline-start: calc(100% - 32px);
+  }
+
+  @media (min-width: 48rem) {
+    .hero__top {
+      padding-block-start: 32px;
+
+      width: 100%;
+      min-height: 747px;
+
+      background-image: url("../../assets/images/hero/hero_md.png");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    :global(.hero__cobrand) {
+      position: unset;
+      transform: none;
+    }
+
+    .hero__bottom {
+      padding-inline: unset;
+      padding-block-start: 29px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      padding-block-start: 44px;
+      padding-block-end: 60px;
+
+      min-height: 848px;
+
+      background-image: url("../../assets/images/hero/hero_lg.png");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .hero__top {
+      padding-block-start: unset;
+
+      flex: 1;
+      min-height: unset;
+
+      background-image: none;
+      background-position: unset;
+      background-size: unset;
+      background-repeat: unset;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .hero {
+      padding-block-start: 36px;
+      padding-block-end: 40px;
+
+      min-height: 620px;
+
+      background-image: url("../../assets/images/hero/hero_xl.png");
+    }
+  }
+
+  @media (min-width: 96rem) {
+    .hero {
+      padding-block-start: 36px;
+      padding-block-end: 96px;
+
+      min-height: 900px;
+
+      background-image: url("../../assets/images/hero/hero_2xl.png");
+    }
+  }
+</style>

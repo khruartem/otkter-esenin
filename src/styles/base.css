@@ -2,7 +2,6 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: none;
-    background-color: var(--color-nephritis-120);
   }
 
   html.is-scroll-locked {
@@ -35,20 +34,5 @@
 
   svg {
     display: block;
-  }
-
-  .status-bar-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: env(safe-area-inset-top);
-
-    background-color: var(--color-nephritis-120);
-
-    z-index: 9999;
-
-    pointer-events: none;
   }
 }
