@@ -27,7 +27,7 @@ import { artists } from "../../data/artists";
     background-image: url(../../assets/images/artists/artists_sm.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
   }
 
   :global(.artists__container) {
@@ -45,6 +45,7 @@ import { artists } from "../../data/artists";
   @media (min-width: 48rem) {
     .artists {
       background-image: url(../../assets/images/artists/artists_md.png);
+      background-size: cover;
     }
 
     :global(.artists__container) {
