@@ -9,13 +9,15 @@ import { communications } from "../../data/communications";
 <section>
   <Container>
     <h2>Пресса о спектакле</h2>
-    {
-      communications.map((communication) => (
-        <li>
-          <Communication {...communication} />
-        </li>
-      ))
-    }
+    <ul>
+      {
+        communications.map((communication) => (
+          <li>
+            <Communication {...communication} />
+          </li>
+        ))
+      }
+    </ul>
     <CTA />
   </Container>
 </section>
