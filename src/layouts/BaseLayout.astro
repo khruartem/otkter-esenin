@@ -59,6 +59,8 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
   </head>
 
   <body>
+    <div class="status-bar-background" aria-hidden="true"></div>
+
     <slot />
 
     <Modal />
