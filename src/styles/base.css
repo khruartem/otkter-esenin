@@ -2,6 +2,7 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: none;
+    background-color: var(--color-nephritis-120);
   }
 
   html.is-scroll-locked {
