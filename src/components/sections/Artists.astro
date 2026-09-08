@@ -1,15 +1,15 @@
 ---
+import Section from "../layout/Section.astro";
 import Container from "../layout/Container.astro";
+import Title from "../ui/Title.astro";
 import Artist from "../ui/Artist.astro";
 
 import { artists } from "../../data/artists";
 ---
 
-<section class="artists">
+<Section class="artists">
   <Container class="artists__container flex flex-col items-center">
-    <h2 class="typography-display-lg text-dark-100 xl:typography-display-xl">
-      Творцы
-    </h2>
+    <Title class="text-dark-100">Творцы</Title>
     <ul class="artists__list flex w-full flex-wrap items-center">
       {
         artists.map((artist) => (
@@ -20,10 +20,10 @@ import { artists } from "../../data/artists";
       }
     </ul>
   </Container>
-</section>
+</Section>
 
 <style>
-  .artists {
+  :global(.artists) {
     background-image: url(../../assets/images/artists/artists_sm.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -43,7 +43,7 @@ import { artists } from "../../data/artists";
   }
 
   @media (min-width: 48rem) {
-    .artists {
+    :global(.artists) {
       background-image: url(../../assets/images/artists/artists_md.png);
       background-size: cover;
     }
@@ -59,7 +59,7 @@ import { artists } from "../../data/artists";
   }
 
   @media (min-width: 64rem) {
-    .artists {
+    :global(.artists) {
       background-image: url(../../assets/images/artists/artists_lg.png);
     }
 
@@ -74,7 +74,7 @@ import { artists } from "../../data/artists";
   }
 
   @media (min-width: 80rem) {
-    .artists {
+    :global(.artists) {
       background-image: url(../../assets/images/artists/artists_xl.png);
     }
 
@@ -87,7 +87,7 @@ import { artists } from "../../data/artists";
   }
 
   @media (min-width: 96rem) {
-    .artists {
+    :global(.artists) {
       background-image: url(../../assets/images/artists/artists_2xl.png);
     }
 
@@ -96,6 +96,10 @@ import { artists } from "../../data/artists";
 
       padding-block-start: 319px;
       padding-block-end: 479px;
+    }
+
+    .artists__list {
+      justify-content: space-evenly;
     }
   }
 </style>

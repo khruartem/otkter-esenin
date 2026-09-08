@@ -1,15 +1,17 @@
 ---
+import Section from "../layout/Section.astro";
 import Container from "../layout/Container.astro";
+import Title from "../ui/Title.astro";
 import Communication from "../ui/Communication.astro";
 import CTA from "../ui/CTA.astro";
 
 import { communications } from "../../data/communications";
 ---
 
-<section>
-  <Container>
-    <h2>Пресса о спектакле</h2>
-    <ul>
+<Section class="pbs-20 xl:pbs-25 2xl:pbs-38">
+  <Container class="flex flex-col items-center gap-15 xl:gap-20 2xl:gap-27">
+    <Title class="text-white-100">Пресса о спектакле</Title>
+    <ul class="communications__list">
       {
         communications.map((communication) => (
           <li>
@@ -20,4 +22,48 @@ import { communications } from "../../data/communications";
     </ul>
     <CTA />
   </Container>
-</section>
+</Section>
+
+<style>
+  .communications__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 40px;
+  }
+
+  @media (min-width: 48rem) {
+    .communications__list {
+      padding-inline: 90px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .communications__list {
+      padding-inline: 0;
+
+      justify-content: space-between;
+      align-content: flex-start;
+
+      gap: unset;
+      row-gap: 60px;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .communications__list {
+      align-content: unset;
+
+      row-gap: 80px;
+    }
+  }
+
+  @media (min-width: 96rem) {
+    .communications__list {
+      justify-content: unset;
+
+      gap: 24px;
+    }
+  }
+</style>

@@ -10,6 +10,7 @@ import { initGallery } from "./init/gallery-init";
 import { initModal } from "./init/modal-init";
 import { initPhotoModalView } from "./init/photo-modal-view-init";
 import { initPagination } from "./init/pagination-init";
+import { initCommunication } from "./init/communication-init";
 
 // Брокер событий
 const events = new EventEmitter();
@@ -18,6 +19,7 @@ const events = new EventEmitter();
 const photoData = new PhotoData(photos);
 
 // UI контроллеры / View
+initCommunication();
 initGallery(events);
 const modalController = initModal();
 const photoModalView = initPhotoModalView(events);

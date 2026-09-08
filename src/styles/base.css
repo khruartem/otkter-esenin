@@ -9,7 +9,7 @@
   }
 
   body {
-    background: var(--color-background);
+    background: var(--color-nephritis-120);
     color: var(--color-primary);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
