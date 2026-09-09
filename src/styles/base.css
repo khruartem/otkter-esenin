@@ -9,7 +9,10 @@
   }
 
   body {
-    background: #03a14c;
+    background: linear-gradient(
+      var(--color-emerald-100) 25%,
+      var(--color-background) 25% 100%
+    );
     color: var(--color-primary);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
