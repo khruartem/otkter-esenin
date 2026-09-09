@@ -7,27 +7,26 @@
 
   @media (width <= 40rem) {
     .browser-theme-bar {
-      display: block;
+      --browser-theme-opacity: 1;
 
+      display: block;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 9999;
 
       width: 100%;
-      height: 25px;
+      height: 15px;
 
-      opacity: var(--browser-theme-opacity);
       background-color: var(--color-emerald-100);
-      /* background-color: red; */
 
       pointer-events: none;
 
-      transition: background-color 100ms linear;
+      transition: background-color 0.5s ease;
     }
 
     .browser-theme-bar[data-transparent] {
-      background-color: transparent;
+      background-color: var(--color-dark-100);
     }
   }
 </style>

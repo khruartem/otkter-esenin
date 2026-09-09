@@ -1,20 +1,14 @@
 export class BrowserThemeController {
-  private static readonly FADE_DISTANCE = 80;
+  private static readonly SCROLL_THRESHOLD = 200;
 
-  constructor(
-    private readonly root: HTMLElement,
-  ) {
+  constructor(private readonly root: HTMLElement) {
     this.init();
   }
 
   private init(): void {
     this.update();
 
-    window.addEventListener(
-      "scroll",
-      this.handleScroll,
-      { passive: true },
-    );
+    window.addEventListener("scroll", this.handleScroll, { passive: true });
   }
 
   private handleScroll = (): void => {
@@ -22,25 +16,12 @@ export class BrowserThemeController {
   };
 
   private update(): void {
-    const scrollY = Math.max(window.scrollY, 0);
+    const isScrolled = window.scrollY > BrowserThemeController.SCROLL_THRESHOLD;
 
-    const progress = Math.min(
-      scrollY / BrowserThemeController.FADE_DISTANCE,
-      1,
-    );
-
-    const opacity = 1 - progress;
-
-    this.root.style.setProperty(
-      "--browser-theme-opacity",
-      String(opacity),
-    );
+    this.root.toggleAttribute("data-transparent", isScrolled);
   }
 
   destroy(): void {
-    window.removeEventListener(
-      "scroll",
-      this.handleScroll,
-    );
+    window.removeEventListener("scroll", this.handleScroll);
   }
 }
