@@ -1,0 +1,35 @@
+---
+import Button from "./Button.astro";
+
+import Telegram from "../../assets/icons/telegram.svg";
+import Web from "../../assets/icons/web.svg";
+---
+
+<ul class="socials">
+  <li>
+    <Button class="socials__item" href="#" target="_blank"><Telegram /></Button>
+  </li>
+  <li>
+    <Button class="socials__item" href="#" target="_blank"><Web /></Button>
+  </li>
+</ul>
+
+<style>
+  .socials {
+    display: flex;
+    flex-wrap: nowrap;
+    color: var(--color-nephritis-120);
+  }
+
+  :global(.socials__item) {
+    color: var(--color-nephritis-120) !important;
+  }
+
+  :global(.socials__item):not(:disabled):hover {
+    color: var(--color-nephritis-100) !important;
+  }
+
+  :global(.socials__item):not(:disabled):active {
+    color: var(--color-white-100) !important;
+  }
+</style>

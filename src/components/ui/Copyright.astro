@@ -1,0 +1,38 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const CURRENT_YEAR = new Date().getFullYear();
+---
+
+<span class:list={["copyright text-white-60 md:pbs-5", className]}
+  >{`${CURRENT_YEAR} Творческое объединение `}<a
+    href="https://otkter.ru/"
+    target="_blank"
+    class="copyright-link">«Открытая Территория»</a
+  ></span
+>
+
+<style>
+  .copyright {
+    padding-block-start: 10px;
+  }
+
+  .copyright::before {
+    content: "©";
+  }
+
+  .copyright-link:hover {
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-nephritis-120);
+  }
+
+  .copyright-link:active {
+    color: var(--color-white-100);
+    text-decoration-line: none;
+    text-decoration-color: var(--color-white-100);
+  }
+</style>
