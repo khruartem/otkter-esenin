@@ -1,5 +1,5 @@
 ---
-import Section from "../layout/Section.astro";
+// import Section from "../layout/Section.astro";
 import Container from "../layout/Container.astro";
 import Title from "../ui/Title.astro";
 import Artist from "../ui/Artist.astro";
@@ -7,7 +7,7 @@ import Artist from "../ui/Artist.astro";
 import { artists } from "../../data/artists";
 ---
 
-<Section class="artists">
+<section class="artists">
   <Container class="artists__container flex flex-col items-center">
     <Title class="text-dark-100">Творцы</Title>
     <ul class="artists__list flex w-full flex-wrap items-center">
@@ -20,7 +20,7 @@ import { artists } from "../../data/artists";
       }
     </ul>
   </Container>
-</Section>
+</section>
 
 <style>
   :global(.artists) {

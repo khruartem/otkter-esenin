@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
 
-import Section from "../layout/Section.astro";
+// import Section from "../layout/Section.astro";
 import Cobrand from "../branding/Cobrand.astro";
 import CTA from "../ui/CTA.astro";
 
 import heroBaseSource from "../../assets/images/hero/hero_base.png";
 ---
 
-<Section class="hero flex w-full flex-col">
+<section class="hero flex w-full flex-col">
   <div class="hero__top">
     <Image src={heroBaseSource} alt="" class="md:hidden" aria-hidden />
     <Cobrand class="hero__cobrand" />
@@ -17,7 +17,7 @@ import heroBaseSource from "../../assets/images/hero/hero_base.png";
   <div class="hero__bottom">
     <CTA compacted />
   </div>
-</Section>
+</section>
 
 <style>
   .hero__top {

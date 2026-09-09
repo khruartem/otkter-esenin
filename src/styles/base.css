@@ -10,9 +10,8 @@
 
   body {
     background: linear-gradient(
-      to bottom,
-      #03a14c 25%,
-      #000 25%
+      var(--color-emerald-100) 0 100px,
+      var(--color-background) 100px 100%
     );
     color: var(--color-primary);
     font-family: var(--font-sans);
