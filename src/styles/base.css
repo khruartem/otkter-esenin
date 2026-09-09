@@ -9,7 +9,7 @@
   }
 
   body {
-    background: var(--color-dark-100);
+    background: #03a14c;
     color: var(--color-primary);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
