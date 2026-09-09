@@ -5,7 +5,7 @@
     display: none;
   }
 
-  @media (max-width: 47.999rem) {
+  @media (width <= 40rem) {
     .browser-theme-bar {
       display: block;
 
@@ -18,10 +18,11 @@
       height: 25px;
 
       background-color: var(--color-emerald-100);
+      /* background-color: red; */
 
       pointer-events: none;
 
-      transition: background-color 600ms ease;
+      transition: background-color 50ms linear;
     }
 
     .browser-theme-bar[data-transparent] {
