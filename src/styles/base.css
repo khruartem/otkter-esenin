@@ -16,10 +16,6 @@
   }
 
   body {
-    /* background: linear-gradient(
-      var(--color-emerald-100) 0 100px,
-      var(--color-background) 100px 100%
-    ); */
     background: var(--color-background);
     color: var(--color-primary);
     font-family: var(--font-sans);
