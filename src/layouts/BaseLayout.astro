@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 
+import BrowserThemeBar from "../components/layout/BrowserThemeBar.astro";
 import Modal from "../components/ui/Modal.astro";
 import PhotoModalView from "../components/view/PhotoModalView.astro";
 
@@ -59,6 +60,8 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
   </head>
 
   <body>
+    <BrowserThemeBar />
+
     <slot />
 
     <Modal />
