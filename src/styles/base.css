@@ -2,6 +2,10 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: none;
+    background: linear-gradient(
+      var(--color-emerald-100) 0 100px,
+      var(--color-background) 100px 100%
+    );
   }
 
   html.is-scroll-locked {
@@ -9,10 +13,9 @@
   }
 
   body {
-    background: linear-gradient(
-      var(--color-emerald-100) 0 100px,
-      var(--color-background) 100px 100%
-    );
+    min-height: 100dvh;
+    margin: 0;
+    background: transparent;
     color: var(--color-primary);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
