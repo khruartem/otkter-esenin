@@ -1,0 +1,32 @@
+<div class="browser-theme-bar" data-browser-theme-bar aria-hidden="true"></div>
+
+<style>
+  .browser-theme-bar {
+    display: none;
+  }
+
+  @media (width <= 40rem) {
+    .browser-theme-bar {
+      display: block;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+
+      width: 100%;
+      height: 25px;
+
+      background-color: var(--color-emerald-100);
+      /* background-color: red; */
+
+      pointer-events: none;
+
+      transition: background-color 100ms linear;
+    }
+
+    .browser-theme-bar[data-transparent] {
+      background-color: transparent;
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import Section from "../layout/Section.astro";
+// import Section from "../layout/Section.astro";
 import Container from "../layout/Container.astro";
 import Title from "../ui/Title.astro";
 import Communication from "../ui/Communication.astro";
@@ -8,7 +8,7 @@ import CTA from "../ui/CTA.astro";
 import { communications } from "../../data/communications";
 ---
 
-<Section class="pbs-20 xl:pbs-25 2xl:pbs-38">
+<section class="pbs-20 xl:pbs-25 2xl:pbs-38">
   <Container class="flex flex-col items-center gap-15 xl:gap-20 2xl:gap-27">
     <Title class="text-white-100">Пресса о спектакле</Title>
     <ul class="communications__list">
@@ -22,7 +22,7 @@ import { communications } from "../../data/communications";
     </ul>
     <CTA />
   </Container>
-</Section>
+</section>
 
 <style>
   .communications__list {
