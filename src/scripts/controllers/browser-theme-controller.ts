@@ -1,5 +1,5 @@
 export class BrowserThemeController {
-  private static readonly SCROLL_THRESHOLD = 250;
+  private static readonly SCROLL_THRESHOLD = 200;
 
   constructor(private readonly root: HTMLElement) {
     this.init();
