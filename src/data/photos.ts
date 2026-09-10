@@ -1,8 +1,8 @@
-import photoSource1 from "../assets/images/gallery/photo_1.png";
-import photoSource2 from "../assets/images/gallery/photo_2.png";
-import photoSource3 from "../assets/images/gallery/photo_3.png";
-import photoSource4 from "../assets/images/gallery/photo_4.png";
-import photoSource5 from "../assets/images/gallery/photo_5.png";
+import photoSource1 from "../assets/images/gallery/photo_1.avif";
+import photoSource2 from "../assets/images/gallery/photo_2.avif";
+import photoSource3 from "../assets/images/gallery/photo_3.avif";
+import photoSource4 from "../assets/images/gallery/photo_4.avif";
+import photoSource5 from "../assets/images/gallery/photo_5.avif";
 
 export type PhotoItem = {
   src: string;
