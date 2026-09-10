@@ -27,37 +27,26 @@ const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" sizes="any" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="theme-color"
-      content="#03a14c"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#03a14c"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta name="color-scheme" content="light" />
     <link rel="apple-touch-icon" href="/ios.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <!-- Open Graph Generated: a.pr-cy.ru -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content="Спектакль" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content="https://otkter.ru/projects/esenin" />
-    <meta property="og:image" content="/preview.webp" />
+    <meta property="og:image" content="/preview.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content={description} />
+    <meta property="og:site_name" content={title} />
     <meta property="og:locale" content="ru" />
     <!-- Twitter -->
-    <meta name="twitter:creator" content={description} />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:creator" content={title} />
+    <meta name="twitter:title" content="Спектакль" />
     <meta name="twitter:description" content={description} />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image:src" content="/preview.webp" />
+    <meta property="twitter:image:src" content="/preview.png" />
   </head>
 
   <body>
