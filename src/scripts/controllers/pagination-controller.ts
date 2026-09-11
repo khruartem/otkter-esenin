@@ -37,7 +37,7 @@ export class PhotoPaginationController {
   private handleClick = (event: MouseEvent): void => {
     const target = event.target;
 
-    if (!(target instanceof HTMLElement)) {
+    if (!(target instanceof Element)) {
       return;
     }
 
