@@ -1,5 +1,4 @@
 import { AppEvents } from "../../shared/events/events";
-import type { GalleryPhotoSelectedPayload } from "../../shared/events/event-types";
 import type { IEvents } from "../../shared/events/EventEmmiter";
 
 export class GalleryController {

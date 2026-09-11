@@ -1,4 +1,3 @@
-import type { GalleryPhotoSelectedPayload } from "../../shared/events/event-types";
 import type { IEvents } from "../../shared/events/EventEmmiter";
 import { AppEvents } from "../../shared/events/events";
 

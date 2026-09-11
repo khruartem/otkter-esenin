@@ -66,4 +66,4 @@ const structuredData = {
 const serializedData = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 ---
 
-<script type="application/ld+json" set:html={serializedData} />
+<script is:inline type="application/ld+json" set:html={serializedData} />
