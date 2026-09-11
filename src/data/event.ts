@@ -64,7 +64,7 @@ class PerformanceEvent implements IPerformanceEvent {
     this._description = description;
     this._startDate = startDate;
     this._dateLabel = dateLabel;
-    this._status = this.setStatus(startDate, status);
+    this._status = status;
     this._ticketURL = ticketURL;
     this._venue = venue;
     this._tickets = tickets;
@@ -78,23 +78,23 @@ class PerformanceEvent implements IPerformanceEvent {
     }
   }
 
-  private setStatus(
-    performanceDate: string,
-    currentStatus: EventStatus,
-  ): EventStatus {
-    if (currentStatus === "cancelled") {
-      return "cancelled" as EventStatus;
-    }
+  // private setStatus(
+  //   performanceDate: string,
+  //   currentStatus: EventStatus,
+  // ): EventStatus {
+  //   if (currentStatus === "cancelled") {
+  //     return currentStatus;
+  //   }
 
-    const currentDateMs = new Date().getMilliseconds();
-    const performanceDateMs = new Date(performanceDate).getMilliseconds();
+  //   const currentDateMs = new Date().getMilliseconds();
+  //   const performanceDateMs = new Date(performanceDate).getMilliseconds();
 
-    if (currentDateMs > performanceDateMs) {
-      return "completed" as EventStatus;
-    } else {
-      return "scheduled" as EventStatus;
-    }
-  }
+  //   if (currentDateMs > performanceDateMs) {
+  //     return "completed" as EventStatus;
+  //   } else {
+  //     return "scheduled" as EventStatus;
+  //   }
+  // }
 
   get name(): string {
     return this._name;
