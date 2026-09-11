@@ -59,14 +59,17 @@ export class PhotoModalView {
   }
 
   render(photo: PhotoItem): HTMLElement {
-    this._image.src = photo.src;
     this._image.alt = photo.alt;
+
+    if (this._image.getAttribute("src") !== photo.src) {
+      this._image.src = photo.src;
+    }
 
     return this._content;
   }
 
-  clear(): void {
-    this._image.src = "";
-    this._image.alt = "";
+  destroy(): void {
+    this._nextButton.removeEventListener("click", this.handleNextPhoto);
+    this._previousButton.removeEventListener("click", this.handlePreviousPhoto);
   }
 }

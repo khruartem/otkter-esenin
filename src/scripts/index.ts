@@ -36,8 +36,6 @@ const emitPhotoChanged = (): void => {
 };
 
 events.on(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
-  photoModalView.clear();
-
   photoData.selectPhoto(index);
   emitPhotoChanged();
 
