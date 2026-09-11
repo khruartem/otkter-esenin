@@ -3,10 +3,6 @@ import "../styles/global.css";
 
 import BrowserThemeBar from "../components/layout/BrowserThemeBar.astro";
 import Footer from "../components/layout/Footer.astro";
-import Modal from "../components/ui/Modal.astro";
-import PhotoModalView from "../components/view/PhotoModalView.astro";
-
-import { photos } from "../data/photos";
 
 interface Props {
   title?: string;
@@ -70,9 +66,6 @@ const imageURL = new URL(image, Astro.site);
     <slot />
 
     <Footer />
-
-    <Modal />
-    <PhotoModalView count={photos.length} />
 
     <script>
       import "../scripts";

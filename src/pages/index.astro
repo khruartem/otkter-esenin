@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EventStructuredData from "../components/seo/EventStructuredData.astro";
+import Modal from "../components/ui/Modal.astro";
+import PhotoModalView from "../components/view/PhotoModalView.astro";
 
 import Hero from "../components/sections/Hero.astro";
 import Second from "../components/sections/Second.astro";
 import Artists from "../components/sections/Artists.astro";
 import Communications from "../components/sections/Communications.astro";
+
+import { photos } from "../data/photos";
 ---
 
 <BaseLayout>
@@ -17,4 +21,7 @@ import Communications from "../components/sections/Communications.astro";
     <Artists />
     <Communications />
   </main>
+
+  <Modal />
+  <PhotoModalView count={photos.length} />
 </BaseLayout>
