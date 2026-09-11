@@ -1,5 +1,4 @@
 import { AppEvents } from "../../shared/events/events";
-import type { GalleryPhotoSelectedPayload } from "../../shared/events/event-types";
 import type { IEvents } from "../../shared/events/EventEmmiter";
 
 export class GalleryController {
@@ -17,7 +16,7 @@ export class GalleryController {
   private handleClick = (event: MouseEvent): void => {
     const target = event.target;
 
-    if (!(target instanceof HTMLElement)) {
+    if (!(target instanceof Element)) {
       return;
     }
 
@@ -34,10 +33,7 @@ export class GalleryController {
       throw new Error("Индекс фото не является числом");
     }
 
-    this.events.emit<GalleryPhotoSelectedPayload>(
-      AppEvents.GALLERY_PHOTO_SELECTED,
-      { index },
-    );
+    this.events.emit(AppEvents.GALLERY_PHOTO_SELECTED, { index });
   };
 
   destroy(): void {

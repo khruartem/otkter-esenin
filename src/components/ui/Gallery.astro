@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 import { type PhotoItem } from "../../data/photos";
 
 interface Props {
@@ -11,7 +13,11 @@ const { photos, class: className = "" } = Astro.props;
 
 <ul
   data-gallery
-  class:list={["gallery", "w-max overflow-y-hidden gap-3 lg:gap-5 xl:gap-6", className]}
+  class:list={[
+    "gallery",
+    "w-max gap-3 overflow-y-hidden lg:gap-5 xl:gap-6",
+    className,
+  ]}
 >
   {
     photos.map((photo, index) => (
@@ -21,16 +27,24 @@ const { photos, class: className = "" } = Astro.props;
           data-gallery-index={index}
           class="gallery__button"
         >
-          <img class="h-full w-full rounded-[20px] object-contain" {...photo} />
+          {/* <img class="h-full w-full rounded-[20px] object-contain" {...photo} /> */}
+          <Image
+            src={photo.thumb}
+            alt={photo.alt}
+            width={520}
+            widths={[300, 400, 520, 800, 1040]}
+            sizes="(min-width: 96rem) 520px, (min-width: 80rem) 368px, (min-width: 64rem) 300px, (min-width: 48rem) 288px, 372px"
+            format="webp"
+            quality={50}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full rounded-[20px] object-contain"
+          />
         </button>
       </li>
     ))
   }
 </ul>
-
-<dialog data-lightbox>
-  <img data-current-photo src="" alt="" />
-</dialog>
 
 <style>
   .gallery {

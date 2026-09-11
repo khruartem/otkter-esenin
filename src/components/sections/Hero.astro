@@ -9,7 +9,14 @@ import heroBaseSource from "../../assets/images/hero/hero_base.avif";
 
 <section class="hero flex w-full flex-col">
   <div class="hero__top">
-    <Image src={heroBaseSource} alt="" class="w-full md:hidden" aria-hidden />
+    <Image
+      src={heroBaseSource}
+      alt=""
+      class="w-full md:hidden"
+      aria-hidden="true"
+      loading="eager"
+      fetchpriority="high"
+    />
     <Cobrand class="hero__cobrand" />
     <h1 class="sr-only">Поэтический спектакль «Есенин. Жизнь в стихах»</h1>
   </div>

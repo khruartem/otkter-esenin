@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://esenin-play.otkter.ru/sitemap.xml

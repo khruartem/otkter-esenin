@@ -19,35 +19,47 @@ export class ModalController {
   }
 
   private init(): void {
-    this.closeButton.addEventListener("click", this.close);
+    this.closeButton.addEventListener("click", this.handleClose);
 
     this.root.addEventListener("click", this.handleBackdropClick);
 
-    this.root.addEventListener("close", this.close);
+    this.root.addEventListener("close", this.handleClose);
   }
 
   open(content: HTMLElement): void {
     this.update(content);
+
+    if (this.root.open) {
+      return;
+    }
 
     document.body.classList.add("modal-open");
 
     this.root.showModal();
   }
 
-  close = (): void => {
-    this.root.close();
+  close(): void {
+    if (this.root.open) {
+      this.root.close();
 
-    document.body.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
 
-    this.clear();
-  };
-
-  update(content: HTMLElement): void {
-    this.content.replaceChildren(content);
+      this.clear();
+    }
   }
 
-  clear = (): void => {
+  update(content: HTMLElement): void {
+    if (this.content.firstElementChild !== content) {
+      this.content.replaceChildren(content);
+    }
+  }
+
+  clear(): void {
     this.content.replaceChildren();
+  }
+
+  private handleClose = (): void => {
+    this.close();
   };
 
   private handleBackdropClick = (event: MouseEvent): void => {

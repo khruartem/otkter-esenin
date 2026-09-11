@@ -1,0 +1,69 @@
+---
+import { performanceEvent } from "../../data/event";
+import { artists } from "../../data/artists";
+
+if (!Astro.site) {
+  throw new Error("Не указан site в astro.config.mjs");
+}
+
+const pageURL = new URL(Astro.url.pathname, Astro.site).href;
+const imageURL = new URL("/preview.png", Astro.site).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "TheaterEvent",
+
+  "@id": `${pageURL}#performance`,
+  name: performanceEvent.name,
+  description: performanceEvent.description,
+  url: pageURL,
+  image: [imageURL],
+
+  startDate: performanceEvent.startDate,
+
+  eventStatus:
+    performanceEvent.status === "cancelled"
+      ? "https://schema.org/EventCancelled"
+      : "https://schema.org/EventScheduled",
+
+  location: {
+    "@type": "Place",
+    name: performanceEvent.venue.name,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: performanceEvent.venue.city,
+      streetAddress: performanceEvent.venue.streetAddress,
+      addressCountry: performanceEvent.venue.country,
+    },
+  },
+
+  organizer: {
+    "@type": "Organization",
+    name: "Творческое объединение «Открытая Территория»",
+    url: "https://otkter.ru/",
+  },
+
+  performer: artists
+    .filter((artist) => artist.role !== "Режиссёр-постановщик")
+    .map((artist) => ({
+      "@type": "Person",
+      name: artist.name,
+    })),
+
+  ...(performanceEvent.status === "scheduled"
+    ? {
+        offers: {
+          "@type": "Offer",
+          url: performanceEvent.ticketURL,
+          price: performanceEvent.tickets.minPrice,
+          priceCurrency: performanceEvent.tickets.currency,
+          availability: `https://schema.org/${performanceEvent.tickets.availability}`,
+        },
+      }
+    : {}),
+};
+
+const serializedData = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+---
+
+<script is:inline type="application/ld+json" set:html={serializedData} />

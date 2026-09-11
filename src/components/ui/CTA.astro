@@ -1,23 +1,31 @@
 ---
 import BuyButton from "./BuyButton.astro";
 
+import { performanceEvent } from "../../data/event";
+
 interface Props {
-  class?: string;
   compacted?: boolean;
+  class?: string;
 }
 
-const { class: className, compacted = false } = Astro.props;
+const { compacted = false, class: className = "" } = Astro.props;
 
-const DATE_AND_TIME = "6 октября, 19:00";
-const ADRESS_PART_1 = "МУК «Районный дом культуры»,";
-const ADRESS_PART_2 = "г. Ногинск, ул. Текстилей, д. 31";
-const ADRESS_FULL = `${ADRESS_PART_1} ${ADRESS_PART_2}`;
+const DATE_TIME = performanceEvent.startDate;
+const DATE_TIME_LABEL = performanceEvent.dateLabel;
+
+const ADRESS_PART_1 = performanceEvent.venue.name;
+const ADRESS_PART_2 = `г. ${performanceEvent.venue.city}, ${performanceEvent.venue.streetAddress}`;
+const ADRESS_FULL = `${ADRESS_PART_1}, ${ADRESS_PART_2}`;
 ---
 
 <div class:list={["flex flex-col items-center gap-5 md:gap-7", className]}>
   <BuyButton />
   <div class="flex flex-col items-center gap-2 px-15.5 md:px-0">
-    <p class="typography-accent-md text-white-100">{DATE_AND_TIME}</p>
+    <p class="typography-accent-md text-white-100">
+      <time datetime={DATE_TIME}>
+        {DATE_TIME_LABEL}
+      </time>
+    </p>
     <div
       class="typography-body-sm text-white-20 flex min-w-62 flex-col items-center"
     >

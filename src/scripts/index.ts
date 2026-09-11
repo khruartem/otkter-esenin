@@ -4,7 +4,6 @@ import { PhotoData } from "../models/photoData";
 
 import { EventEmitter } from "../shared/events/EventEmmiter";
 import { AppEvents } from "../shared/events/events";
-import type { GalleryPhotoChangedPayload } from "../shared/events/event-types";
 
 import { initGallery } from "./init/gallery-init";
 import { initModal } from "./init/modal-init";
@@ -29,16 +28,14 @@ const paginationController = initPagination(photoModalView.content, events);
 
 // Бизнес-логика
 const emitPhotoChanged = (): void => {
-  events.emit<GalleryPhotoChangedPayload>(AppEvents.GALLERY_PHOTO_CHANGED, {
+  events.emit(AppEvents.GALLERY_PHOTO_CHANGED, {
     index: photoData.currentIndex,
     photo: photoData.currentPhoto,
   });
 };
 
-events.on<{ index: number }>(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
-  photoModalView.clear();
-
-  photoData.currentIndex = index;
+events.on(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
+  photoData.selectPhoto(index);
   emitPhotoChanged();
 
   const content = photoModalView.render(photoData.currentPhoto);
@@ -64,10 +61,7 @@ events.on(AppEvents.GALLERY_PREVIOUS_PHOTO, () => {
   modalController.update(content);
 });
 
-events.on<GalleryPhotoChangedPayload>(
-  AppEvents.GALLERY_PHOTO_CHANGED,
-  ({ index, photo }) => {
-    photoModalView.render(photo);
-    paginationController.update(index);
-  },
-);
+events.on(AppEvents.GALLERY_PHOTO_CHANGED, ({ index, photo }) => {
+  photoModalView.render(photo);
+  paginationController.update(index);
+});
