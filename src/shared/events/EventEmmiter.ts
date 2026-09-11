@@ -1,63 +1,59 @@
-import { AppEvents } from "./events";
+import type { EventMap } from "./event-types";
 
-type EventName = AppEvents | string | RegExp;
-type Subscriber = Function;
-type EmitterEvent = {
-  eventName: string;
-  data: unknown;
-};
+type EventName = keyof EventMap;
+
+type Handler<K extends EventName> = (data: EventMap[K]) => void;
+
+type EventArgs<K extends EventName> = EventMap[K] extends undefined
+  ? []
+  : [data: EventMap[K]];
 
 export interface IEvents {
-  on<T extends object>(event: EventName, callback: (data: T) => void): void;
-  emit<T extends object>(event: string, data?: T): void;
+  on<K extends EventName>(event: K, callback: Handler<K>): () => void;
+
+  emit<K extends EventName>(event: K, ...args: EventArgs<K>): void;
 }
 
 export class EventEmitter implements IEvents {
-  _events: Map<EventName, Set<Subscriber>>;
+  private readonly listeners = new Map<
+    EventName,
+    Set<(data: unknown) => void>
+  >();
 
-  constructor() {
-    this._events = new Map<EventName, Set<Subscriber>>();
-  }
+  on<K extends EventName>(event: K, callback: Handler<K>): () => void {
+    let subscribers = this.listeners.get(event);
 
-  on<T extends object>(eventName: EventName, callback: (event: T) => void) {
-    if (!this._events.has(eventName)) {
-      this._events.set(eventName, new Set<Subscriber>());
+    if (!subscribers) {
+      subscribers = new Set();
+      this.listeners.set(event, subscribers);
     }
-    this._events.get(eventName)?.add(callback);
+
+    const listener = (data: unknown): void => {
+      callback(data as EventMap[K]);
+    };
+
+    subscribers.add(listener);
+
+    return () => {
+      const currentSubscribers = this.listeners.get(event);
+
+      currentSubscribers?.delete(listener);
+
+      if (currentSubscribers?.size === 0) {
+        this.listeners.delete(event);
+      }
+    };
   }
 
-  off(eventName: EventName, callback: Subscriber) {
-    if (this._events.has(eventName)) {
-      this._events.get(eventName)!.delete(callback);
-      if (this._events.get(eventName)?.size === 0) {
-        this._events.delete(eventName);
-      }
+  emit<K extends EventName>(event: K, ...args: EventArgs<K>): void {
+    const subscribers = this.listeners.get(event);
+
+    if (!subscribers) {
+      return;
     }
-  }
 
-  emit<T extends object>(eventName: string, data?: T) {
-    this._events.forEach((subscribers, name) => {
-      if (name === AppEvents.ALL)
-        subscribers.forEach((callback) =>
-          callback({
-            eventName,
-            data,
-          }),
-        );
-      if (
-        (name instanceof RegExp && name.test(eventName)) ||
-        name === eventName
-      ) {
-        subscribers.forEach((callback) => callback(data));
-      }
-    });
-  }
-
-  onAll(callback: (event: EmitterEvent) => void) {
-    this.on("*", callback);
-  }
-
-  offAll() {
-    this._events = new Map<string, Set<Subscriber>>();
+    for (const subscriber of [...subscribers]) {
+      subscriber(args[0]);
+    }
   }
 }

@@ -29,13 +29,13 @@ const paginationController = initPagination(photoModalView.content, events);
 
 // Бизнес-логика
 const emitPhotoChanged = (): void => {
-  events.emit<GalleryPhotoChangedPayload>(AppEvents.GALLERY_PHOTO_CHANGED, {
+  events.emit(AppEvents.GALLERY_PHOTO_CHANGED, {
     index: photoData.currentIndex,
     photo: photoData.currentPhoto,
   });
 };
 
-events.on<{ index: number }>(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
+events.on(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
   photoModalView.clear();
 
   photoData.selectPhoto(index);
@@ -64,10 +64,7 @@ events.on(AppEvents.GALLERY_PREVIOUS_PHOTO, () => {
   modalController.update(content);
 });
 
-events.on<GalleryPhotoChangedPayload>(
-  AppEvents.GALLERY_PHOTO_CHANGED,
-  ({ index, photo }) => {
-    photoModalView.render(photo);
-    paginationController.update(index);
-  },
-);
+events.on(AppEvents.GALLERY_PHOTO_CHANGED, ({ index, photo }) => {
+  photoModalView.render(photo);
+  paginationController.update(index);
+});
