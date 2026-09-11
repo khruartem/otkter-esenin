@@ -13,12 +13,15 @@ const { count } = Astro.props;
 >
   {
     Array.from({ length: count }, (_, index) => (
-      <li
-        class="photo-pagination__item"
-        data-pagination-index={index}
-        aria-label={`Фотография под номером ${index + 1}`}
-      >
-        <span class="photo-pagination__dot" />
+      <li>
+        <button
+          type="button"
+          class="photo-pagination__item"
+          data-pagination-index={index}
+          aria-label={`Показать фотографию ${index + 1}`}
+        >
+          <span class="photo-pagination__dot" aria-hidden="true" />
+        </button>
       </li>
     ))
   }
@@ -39,8 +42,15 @@ const { count } = Astro.props;
 
     padding: 2px;
     border: 0;
+    border-radius: 50%;
 
     background: transparent;
+    cursor: pointer;
+  }
+
+  .photo-pagination__item:focus-visible {
+    outline: 2px solid var(--color-sun-100);
+    outline-offset: 2px;
   }
 
   .photo-pagination__dot {
@@ -52,11 +62,6 @@ const { count } = Astro.props;
     border-radius: 100px;
 
     background-color: var(--color-white-60);
-
-    transition:
-      width 240ms ease,
-      transform 240ms ease,
-      background-color 240ms ease;
   }
 
   .photo-pagination__item[data-active] .photo-pagination__dot {
@@ -74,5 +79,15 @@ const { count } = Astro.props;
 
   .photo-pagination__item[data-active]:hover .photo-pagination__dot {
     transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo-pagination__dot {
+      transition: none;
+    }
+
+    .photo-pagination__item:hover .photo-pagination__dot {
+      transform: none;
+    }
   }
 </style>
