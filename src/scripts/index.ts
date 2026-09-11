@@ -4,7 +4,6 @@ import { PhotoData } from "../models/photoData";
 
 import { EventEmitter } from "../shared/events/EventEmmiter";
 import { AppEvents } from "../shared/events/events";
-import type { GalleryPhotoChangedPayload } from "../shared/events/event-types";
 
 import { initGallery } from "./init/gallery-init";
 import { initModal } from "./init/modal-init";
