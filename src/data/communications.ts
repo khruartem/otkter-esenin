@@ -24,8 +24,7 @@ export const communications: Communication[] = [
   },
   {
     media: "МК",
-    title:
-      "«ВДНХ примет участие в фестивале “Любой из нас хоть чуточку Есенин”»",
+    title: "«“Есенин. Жизнь в стихах”: на сцене разговор с поэтом»",
     url: "https://www.mk.ru/culture/2025/08/09/esenin-zhizn-v-stikhakh-na-scene-razgovor-s-poetom.html",
   },
 ];
