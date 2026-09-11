@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import EventStructuredData from "../components/seo/EventStructuredData.astro";
 
 import Hero from "../components/sections/Hero.astro";
 import Second from "../components/sections/Second.astro";
@@ -8,6 +9,8 @@ import Communications from "../components/sections/Communications.astro";
 ---
 
 <BaseLayout>
+  <EventStructuredData slot="head" />
+
   <main class="flex flex-col gap-2.5 md:gap-5 lg:gap-2.5 xl:gap-5 2xl:gap-10">
     <Hero />
     <Second />
