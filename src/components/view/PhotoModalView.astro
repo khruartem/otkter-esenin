@@ -17,11 +17,18 @@ const { count } = Astro.props;
     <div class="photo-modal">
       <Button
         class="photo-modal__button photo-modal__button_left"
+        aria-label="Предыдущая фотография"
         data-button-previous><Previous /></Button
       >
-      <img class="photo-modal__image" data-photo-modal-image alt="" />
+      <img
+        class="photo-modal__image"
+        data-photo-modal-image
+        alt=""
+        decoding="async"
+      />
       <Button
         class="photo-modal__button photo-modal__button_right"
+        aria-label="Следующая фотография"
         data-button-next><Next /></Button
       >
     </div>
