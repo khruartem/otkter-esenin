@@ -38,7 +38,7 @@ const emitPhotoChanged = (): void => {
 events.on<{ index: number }>(AppEvents.GALLERY_PHOTO_SELECTED, ({ index }) => {
   photoModalView.clear();
 
-  photoData.currentIndex = index;
+  photoData.selectPhoto(index);
   emitPhotoChanged();
 
   const content = photoModalView.render(photoData.currentPhoto);

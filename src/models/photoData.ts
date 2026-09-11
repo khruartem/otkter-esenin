@@ -3,6 +3,8 @@ import type { PhotoItem } from "../data/photos";
 export interface IPhotoData {
   currentPhoto: PhotoItem;
   currentIndex: number;
+
+  selectPhoto: (index: number) => void;
   changePhoto: (index: number) => void;
 }
 
@@ -18,10 +20,6 @@ export class PhotoData implements IPhotoData {
     this._photos = [...photos];
   }
 
-  set currentIndex(index: number) {
-    this._currentIndex = index;
-  }
-
   get currentIndex() {
     return this._currentIndex;
   }
@@ -33,7 +31,15 @@ export class PhotoData implements IPhotoData {
       throw new Error("Фотография не найдена");
     }
 
-    return this._photos[this._currentIndex]!;
+    return currentPhoto;
+  }
+
+  selectPhoto(index: number): void {
+    if (!Number.isInteger(index) || index < 0 || index >= this._photos.length) {
+      throw new RangeError(`Недопустимый индекс фотографии: ${index}`);
+    }
+
+    this._currentIndex = index;
   }
 
   changePhoto(index: number) {
