@@ -1,17 +1,19 @@
 ---
 import Button from "./Button.astro";
 
-import Telegram from "../../assets/icons/telegram.svg";
-import VK from "../../assets/icons/vk.svg";
+import { socials } from "../../data/socials";
 ---
 
 <ul class="socials">
-  <li>
-    <Button class="socials__item" href="#" target="_blank"><Telegram /></Button>
-  </li>
-  <li>
-    <Button class="socials__item" href="#" target="_blank"><VK /></Button>
-  </li>
+  {
+    socials.map(({ url, icon: Icon }) => (
+      <li>
+        <Button class="socials__item" href={url} target="_blank">
+          <Icon />
+        </Button>
+      </li>
+    ))
+  }
 </ul>
 
 <style>
