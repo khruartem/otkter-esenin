@@ -53,10 +53,7 @@ export class PhotoPaginationController {
       throw new Error("Индекс фото не является числом");
     }
 
-    this.events.emit<GalleryPhotoSelectedPayload>(
-      AppEvents.GALLERY_PHOTO_SELECTED,
-      { index },
-    );
+    this.events.emit(AppEvents.GALLERY_PHOTO_SELECTED, { index });
   };
 
   destroy(): void {
