@@ -3,20 +3,41 @@ name: CI -> Deploy to hosting
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: esenin-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Install dependencies and build
-        run: |
-          npm ci
-          npm run build
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
 
-      - name: Upload from dist via FTP
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check types
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload from dist
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -24,4 +45,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./dist/"
           server-dir: "/esenin-play.otkter.ru/docs/"
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
