@@ -54,6 +54,7 @@ import { artists } from "../../data/artists";
 
     .artists__list {
       row-gap: 80px;
+      column-gap: 60px;
     }
   }
 
@@ -69,6 +70,7 @@ import { artists } from "../../data/artists";
 
     .artists__list {
       justify-content: space-between;
+      flex-wrap: nowrap;
     }
   }
 
@@ -99,6 +101,12 @@ import { artists } from "../../data/artists";
 
     .artists__list {
       justify-content: space-evenly;
+    }
+  }
+
+  @media (min-width: 120rem) {
+    :global(.artists) {
+      background-size: 100% 100%;
     }
   }
 </style>
