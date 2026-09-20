@@ -26,7 +26,7 @@ const { name, avatar, role, regal } = Astro.props;
       {name}
     </h3>
     <p
-      class="text-white-60 typography-body-md md:typography-body-sm 2xl:typography-body-md max-w-[23ch] 2xl:max-w-max"
+      class="artist__regal text-white-60 typography-body-md md:typography-body-sm 2xl:typography-body-md max-w-[23ch]"
     >
       {regal}
     </p>
@@ -49,7 +49,7 @@ const { name, avatar, role, regal } = Astro.props;
 
   @media (min-width: 48rem) {
     .artist {
-      max-width: 264px;
+      min-width: 264px;
     }
 
     .artist__avatar {
@@ -64,7 +64,7 @@ const { name, avatar, role, regal } = Astro.props;
 
   @media (min-width: 64rem) {
     .artist {
-      max-width: 220px;
+      min-width: 220px;
     }
 
     .artist__avatar {
@@ -79,7 +79,7 @@ const { name, avatar, role, regal } = Astro.props;
 
   @media (min-width: 80rem) {
     .artist {
-      max-width: 270px;
+      min-width: 270px;
     }
 
     .artist__avatar {
@@ -94,7 +94,7 @@ const { name, avatar, role, regal } = Astro.props;
 
   @media (min-width: 96rem) {
     .artist {
-      max-width: 384px;
+      min-width: 384px;
     }
 
     .artist__avatar {
@@ -104,6 +104,12 @@ const { name, avatar, role, regal } = Astro.props;
 
     .artist__info {
       gap: 8px;
+    }
+  }
+
+  @media (min-width: 120rem) {
+    .artist__regal {
+      max-width: max-content;
     }
   }
 </style>
