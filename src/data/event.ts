@@ -137,25 +137,25 @@ const defaultData: TPerformanceEvent = {
 
   // Фактическая дата спектакля
   // Формат: YYYY-MM-DDTHH:mm:ss+03:00
-  startDate: "2026-10-06T19:00:00+03:00",
+  startDate: "2026-10-18T18:00:00+03:00",
 
   // Подпись, которая будет отображаться на сайте.
-  dateLabel: "6 октября, 19:00",
+  dateLabel: "18 октября, 18:00 и 20:00",
 
   status: "scheduled",
 
   ticketURL:
-    "https://biletof.com/action/?ra=20043&frame=1&action=11787&place=47",
+    "https://afisha.yandex.ru/moscow/literary-reading/esenin-zhizn-v-stikhakh-tvorcheskoe-obedinenie-otkrytaia-territoriia",
 
   venue: {
-    name: "МУК «Районный дом культуры»",
-    city: "Ногинск",
-    streetAddress: "ул. Текстилей, д. 31",
+    name: "Театр «Фэст»",
+    city: "Мытищи",
+    streetAddress: "ул. Щербакова, 6А",
     country: "RU",
   },
   tickets: {
-    minPrice: 500,
-    maxPrice: 1100,
+    minPrice: 1900,
+    maxPrice: 2500,
     currency: "RUB",
     availability: "InStock",
   },
