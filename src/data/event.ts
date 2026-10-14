@@ -137,25 +137,25 @@ const defaultData: TPerformanceEvent = {
 
   // Фактическая дата спектакля
   // Формат: YYYY-MM-DDTHH:mm:ss+03:00
-  startDate: "2026-10-18T18:00:00+03:00",
+  startDate: "2026-11-27T19:00:00+03:00",
 
   // Подпись, которая будет отображаться на сайте.
-  dateLabel: "18 октября, 18:00 и 20:00",
+  dateLabel: "27 ноября, 19:00",
 
   status: "scheduled",
 
   ticketURL:
-    "https://afisha.yandex.ru/moscow/literary-reading/esenin-zhizn-v-stikhakh-tvorcheskoe-obedinenie-otkrytaia-territoriia",
+    "https://duchg.ru/?p=66056",
 
   venue: {
-    name: "Театр «Фэст»",
-    city: "Мытищи",
-    streetAddress: "ул. Щербакова, 6А",
+    name: "Дом учёных Научного центра РАН",
+    city: "Черноголовка",
+    streetAddress: "ул. Лесная, д. 11",
     country: "RU",
   },
   tickets: {
-    minPrice: 1900,
-    maxPrice: 2500,
+    minPrice: 700,
+    maxPrice: 1100,
     currency: "RUB",
     availability: "InStock",
   },
