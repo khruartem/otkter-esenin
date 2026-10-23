@@ -2,6 +2,8 @@
 import Logo from "./Logo.astro";
 import EventPlace from "../../assets/icons/event_place.svg";
 
+import { performanceEvent } from "../../data/event";
+
 interface Props {
   class?: string;
 }
@@ -20,8 +22,10 @@ const { class: className = "" } = Astro.props;
     class="max-h-8 w-46 lg:max-h-10 lg:w-59 xl:max-h-8 xl:w-46 2xl:max-h-10 2xl:w-59"
   />
   <span aria-hidden="true" class="bg-white-100 h-8 w-px shrink-0"></span>
-  <EventPlace
-    class="text-navy-100 h-auto w-16.5 lg:w-25 xl:w-16.5 2xl:w-25"
-    aria-label="ДК Богородский"
-  />
+  <a href={performanceEvent.ticketURL} target="_blank">
+    <EventPlace
+      class="text-navy-100 h-auto w-16.5 lg:w-25 xl:w-16.5 2xl:w-25"
+      aria-label="ДК Богородский"
+    />
+  </a>
 </div>
