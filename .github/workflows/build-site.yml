@@ -1,4 +1,4 @@
-name: CI -> Deploy to hosting
+name: Build Esenin site
 
 on:
   push:
@@ -34,13 +34,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload from dist
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Save production build
+        uses: actions/upload-artifact@v7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "./dist/"
-          server-dir: "/esenin-play.otkter.ru/docs/"
-          dangerous-clean-slate: false
+          name: esenin-dist-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
